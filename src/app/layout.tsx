@@ -20,7 +20,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="max-w-2xl m-auto p-10">
+        <main className="max-w-4xl m-auto p-10">
           <Navbar />
           {children}
         </main>

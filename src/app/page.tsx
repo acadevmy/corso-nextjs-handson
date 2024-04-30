@@ -6,7 +6,7 @@ import nextLogo from "@/images/next.svg";
 
 export default function Home() {
   return (
-    <main className="max-w-2xl m-auto p-10">
+    <div>
       <div className="mb-10">
         <h1 className="mb-4">Ciao, Bevenuto nel mio Porfolio 👋</h1>
         <h2 className="mb-10">
@@ -63,6 +63,6 @@ export default function Home() {
           title="@myusername"
         />
       </div>
-    </main>
+    </div>
   );
 }

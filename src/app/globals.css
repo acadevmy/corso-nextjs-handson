@@ -16,6 +16,6 @@ h2 {
 
 @layer components {
   .btn-link {
-    @apply hover:text-orange-600
+    @apply hover:text-orange-500
   }
 }

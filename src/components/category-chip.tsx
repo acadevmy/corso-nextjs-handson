@@ -1,7 +1,7 @@
 import Link, { LinkProps } from "next/link";
 
 type CategoryChipProps = {
-  slug: LinkProps["href"];
+  slug: string;
   label: string;
 };
 

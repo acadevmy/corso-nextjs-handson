@@ -70,3 +70,23 @@ export const posts = [
     category: 2,
   },
 ];
+
+export const works = [
+  {
+    id: 1,
+    company: "Devmy",
+    role: "Frontend Developer",
+    startDate: new Date(2023, 10, 1),
+    description:
+      "Esse veniam est ad duis ullamco consequat. Deserunt ipsum exercitation Lorem laboris nostrud laborum do anim minim cupidatat culpa. Quis enim ipsum enim deserunt. Cillum culpa ipsum tempor enim ipsum. Nostrud ut nisi in culpa.",
+  },
+  {
+    id: 2,
+    company: "Vercel",
+    role: "Frontend Developer",
+    startDate: new Date(2022, 1, 1),
+    endData: new Date(2023, 10, 1),
+    description:
+      "Qui cupidatat quis aute est consectetur irure culpa excepteur mollit deserunt id aliquip incididunt. Ipsum labore magna proident esse cupidatat ut magna excepteur aute cillum officia excepteur et. Anim enim culpa amet ad pariatur id occaecat laborum occaecat proident ex dolor excepteur. Ad dolore exercitation est ut Lorem occaecat eiusmod. Ullamco irure sunt minim quis ipsum aute occaecat excepteur exercitation dolor nisi. Non cillum laboris deserunt nulla ad duis aliqua nisi cillum non sit. Laborum adipisicing anim voluptate nulla cillum ex duis ex exercitation eiusmod.",
+  },
+];

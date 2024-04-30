@@ -6,12 +6,16 @@ import { usePathname } from "next/navigation";
 
 const items = [
   {
-    label: "Homepage",
+    label: "👩‍💻",
     href: "/",
   },
   {
     label: "Blog",
     href: "/blog",
+  },
+  {
+    label: "I miei lavori",
+    href: "/works",
   },
 ];
 
@@ -25,6 +29,7 @@ function Navbar() {
           href={item.href}
           className={clsx("btn-link", {
             "text-orange-600": pathname === item.href,
+            "text-4xl": item.href === "/",
           })}
         >
           {item.label}

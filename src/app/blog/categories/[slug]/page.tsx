@@ -36,3 +36,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     </div>
   );
 }
+
+export function generateStaticParams() {
+  return categories.map((item) => ({
+    slug: item.slug,
+  }));
+}

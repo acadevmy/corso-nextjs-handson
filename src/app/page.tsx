@@ -15,7 +15,7 @@ export default function Home() {
 
         <p>
           Sint nisi dolor commodo esse id officia aute magna ad velit elit magna
-          quis.
+          quis.{" "}
           <Badge
             src={nextLogo}
             alt="next.js logo"

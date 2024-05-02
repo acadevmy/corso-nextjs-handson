@@ -1,7 +1,7 @@
 import React from "react";
 
 import PostCard from "@/components/post-card";
-import { categories, posts } from "@/lib/data";
+import { fetchCategories, fetchPosts } from "@/lib/data";
 
 type CategoryPageProps = {
   params: {
@@ -9,7 +9,9 @@ type CategoryPageProps = {
   };
 };
 
-export default function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const categories = await fetchCategories();
+  const posts = await fetchPosts();
   const category = categories.find((item) => item.slug === params.slug);
   const filteredPosts = posts.filter((item) => item.category === category?.id);
 
@@ -37,7 +39,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   );
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const categories = await fetchCategories();
   return categories.map((item) => ({
     slug: item.slug,
   }));

@@ -1,11 +1,12 @@
 import CategoryChip from "@/components/category-chip";
-import { categories } from "@/lib/data";
+import { fetchCategories } from "@/lib/data";
 
 type BlogLayoutProps = Readonly<{
   children: React.ReactNode;
 }>;
 
-export default function BlogLayout({ children }: BlogLayoutProps) {
+export default async function BlogLayout({ children }: BlogLayoutProps) {
+  const categories = await fetchCategories();
   return (
     <div className="flex gap-10">
       <div className="flex flex-col gap-4 w-32">

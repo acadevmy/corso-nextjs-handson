@@ -1,7 +1,8 @@
 import WorkCard from "@/components/work-card";
-import { works } from "@/lib/data";
+import { fetchWorks } from "@/lib/data";
 
-export default function WorksPage() {
+export default async function WorksPage() {
+  const works = await fetchWorks();
   return (
     <div>
       <h1 className="mb-10">Works 💻</h1>

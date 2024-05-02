@@ -1,7 +1,9 @@
 import PostCard from "@/components/post-card";
-import { posts } from "@/lib/data";
+import { fetchPosts } from "@/lib/data";
 
-function BlogPage() {
+async function BlogPage() {
+  const posts = await fetchPosts();
+
   return (
     <div>
       <h1 className="mb-10">Blog 📚</h1>

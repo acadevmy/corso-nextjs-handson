@@ -1,4 +1,4 @@
-export const categories = [
+const categories = [
   {
     id: 1,
     label: "Frontend",
@@ -29,7 +29,7 @@ export const categories = [
   },
 ];
 
-export const posts = [
+const posts = [
   {
     imageSrc:
       "https://fastly.picsum.photos/id/1015/1920/1920.jpg?hmac=JDdYl803NLWk-oY2XxB_WKgjS9MaYCQUfMuMB87dPcc",
@@ -71,7 +71,7 @@ export const posts = [
   },
 ];
 
-export const works = [
+const works = [
   {
     id: 1,
     company: "Devmy",
@@ -90,3 +90,37 @@ export const works = [
       "Qui cupidatat quis aute est consectetur irure culpa excepteur mollit deserunt id aliquip incididunt. Ipsum labore magna proident esse cupidatat ut magna excepteur aute cillum officia excepteur et. Anim enim culpa amet ad pariatur id occaecat laborum occaecat proident ex dolor excepteur. Ad dolore exercitation est ut Lorem occaecat eiusmod. Ullamco irure sunt minim quis ipsum aute occaecat excepteur exercitation dolor nisi. Non cillum laboris deserunt nulla ad duis aliqua nisi cillum non sit. Laborum adipisicing anim voluptate nulla cillum ex duis ex exercitation eiusmod.",
   },
 ];
+
+export async function fetchPosts() {
+  console.log("Fetching posts...");
+
+  await new Promise((res) => setTimeout(res, 5000));
+  console.log("data fetch posts completed after 5 second");
+  return posts;
+}
+
+export async function fetchPostBySlug(slug: string) {
+  console.log(`Fetching post ${slug}...`);
+  await new Promise((res) => setTimeout(res, 3000));
+  console.log(`data fetch post ${slug} completed after 3 second`);
+
+  return posts.find((item) => item.slug === slug);
+}
+
+export async function fetchWorks() {
+  console.log("Fetching works...");
+
+  await new Promise((res) => setTimeout(res, 3000));
+
+  console.log("data fetch works completed after 3 second");
+  return works;
+}
+
+export async function fetchCategories() {
+  console.log("Fetching categories");
+
+  await new Promise((res) => setTimeout(res, 3000));
+
+  console.log("data fetch categories after 3 second");
+  return categories;
+}

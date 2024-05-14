@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Badge from "@/components/badge";
 import ChannelLink from "@/components/channel-link";
 import ImageGrid from "@/components/image-grid";
@@ -8,9 +10,6 @@ import nextLogo from "@/images/next.svg";
 import { fetchLatestPosts, fetchLatestWorks } from "@/lib/data";
 
 export default async function Home() {
-  const latestPosts = await fetchLatestPosts();
-  const latestWorks = await fetchLatestWorks();
-
   return (
     <div>
       <div className="mb-10">
@@ -71,9 +70,13 @@ export default async function Home() {
       </div>
 
       <div className="mb-10">
-        <LatestBlogPosts data={latestPosts} />
+        <Suspense>
+          <LatestBlogPosts />
+        </Suspense>
       </div>
-      <LatestWorks data={latestWorks} />
+      <Suspense>
+        <LatestWorks />
+      </Suspense>
     </div>
   );
 }

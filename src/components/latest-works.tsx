@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Work } from "@/lib/definitions";
+import { fetchLatestWorks } from "@/lib/data";
 
 import WorkCard from "./work-card";
 
-type Props = {
-  data: Work[];
-};
+async function LatestWorks() {
+  const data = await fetchLatestWorks();
 
-const LatestWorks = ({ data }: Props) => {
   return (
     <div>
       <h2 className="mb-6">Gli ultimi lavori</h2>
@@ -26,6 +24,6 @@ const LatestWorks = ({ data }: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default LatestWorks;

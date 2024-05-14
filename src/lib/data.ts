@@ -15,8 +15,6 @@ export async function fetchPosts() {
 }
 
 export async function fetchLatestPosts() {
-  // await new Promise((res) => setTimeout(res, 5000));
-
   const data = await sql<Post>`
     SELECT posts.*, to_jsonb(categories) as category
     FROM posts
@@ -63,7 +61,7 @@ export async function fetchWorks() {
 }
 
 export async function fetchLatestWorks() {
-  // await new Promise((res) => setTimeout(res, 1000));
+  // await new Promise((res) => setTimeout(res, 3000));
 
   const data = await sql<Work>`
     SELECT *

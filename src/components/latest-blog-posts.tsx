@@ -1,12 +1,10 @@
-import { Post } from "@/lib/definitions";
+import { fetchLatestPosts } from "@/lib/data";
 
 import PostCard from "./post-card";
 
-type Props = {
-  data: Post[];
-};
+export default async function LatestBlogPosts() {
+  const data = await fetchLatestPosts();
 
-export default function LatestBlogPosts({ data }: Props) {
   return (
     <div>
       <h2 className="mb-6">Gli ultimi articoli</h2>

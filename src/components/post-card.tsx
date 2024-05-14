@@ -11,7 +11,7 @@ type PostCardProps = {
   title: string;
   publishedAt: Date;
   summary: string;
-  imageSrc: ImageProps["src"];
+  imageSrc?: ImageProps["src"];
   imageAlt?: ImageProps["alt"];
   categoryLabel?: string;
   categorySlug?: string;
@@ -30,11 +30,14 @@ function PostCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      className="border border-zinc-500 p-6 rounded-md"
+      className="block border border-zinc-500 p-6 rounded-md"
     >
-      <div className="relative w-full h-60 mb-10 bg-zinc-400 rounded-md">
-        {/* <Image /> */}
-      </div>
+      {imageSrc && (
+        <div className="relative w-full h-60 mb-10 bg-zinc-400 rounded-md">
+          {/* <Image /> */}
+        </div>
+      )}
+
       <p className="text-zinc-500 text-sm pb-1">{formatDate(publishedAt)}</p>
 
       {categoryLabel && categorySlug && (

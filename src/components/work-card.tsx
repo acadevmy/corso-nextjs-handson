@@ -7,7 +7,7 @@ type WorkCardProps = {
   role: string;
   startDate: Date;
   endDate?: Date;
-  description: string;
+  description?: string;
 };
 
 export default function WorkCard({
@@ -26,7 +26,7 @@ export default function WorkCard({
         {endDate ? ` - ${formatDate(endDate)}` : ""}
       </p>
 
-      <p className="text-sm">{description}</p>
+      {description && <p className="text-sm">{description}</p>}
     </div>
   );
 }

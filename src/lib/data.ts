@@ -14,6 +14,20 @@ export async function fetchPosts() {
   return data.rows;
 }
 
+export async function fetchLatestPosts() {
+  // await new Promise((res) => setTimeout(res, 5000));
+
+  const data = await sql<Post>`
+    SELECT posts.*, to_jsonb(categories) as category
+    FROM posts
+    JOIN categories ON posts.category = categories.id
+    ORDER BY "publishedAt" DESC
+    LIMIT 2
+  `;
+
+  return data.rows;
+}
+
 export async function fetchPostBySlug(slug: string) {
   const data = await sql<Post>`
     SELECT posts.*, to_jsonb(categories) as category
@@ -39,12 +53,23 @@ export async function fetchPostsByCategory(categoryId: string) {
 
 // works
 export async function fetchWorks() {
-  // await new Promise((res) => setTimeout(res, 3000));
+  const data = await sql<Work>`
+    SELECT *
+    FROM works
+    ORDER BY "startDate" DESC
+  `;
+
+  return data.rows;
+}
+
+export async function fetchLatestWorks() {
+  // await new Promise((res) => setTimeout(res, 1000));
 
   const data = await sql<Work>`
     SELECT *
     FROM works
     ORDER BY "startDate" DESC
+    LIMIT 2
   `;
 
   return data.rows;

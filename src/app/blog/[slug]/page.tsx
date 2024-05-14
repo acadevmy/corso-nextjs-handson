@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import CategoryChip from "@/components/category-chip";
 import { fetchPostBySlug, fetchPosts } from "@/lib/data";
 import { formatDate } from "@/lib/utils";
@@ -10,6 +12,8 @@ type PostPage = {
 
 async function PostPage({ params }: PostPage) {
   const post = await fetchPostBySlug(params.slug);
+
+  if (!post) notFound();
 
   return (
     <div>

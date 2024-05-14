@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import React, { useEffect } from "react";
 
 import PostCard from "@/components/post-card";
@@ -16,6 +17,9 @@ type CategoryPageProps = {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const category = await fetchCategoryBySlug(params.slug);
+
+  if (!category) notFound();
+
   const filteredPosts = await fetchPostsByCategory(category.id);
 
   return (

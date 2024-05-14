@@ -18,7 +18,7 @@ export default async function WorksPage() {
               description={item.description}
               role={item.role}
               startDate={item.startDate}
-              endDate={item.endData}
+              endDate={item.endDate}
             />
           </div>
         ))}

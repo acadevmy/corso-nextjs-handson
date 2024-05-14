@@ -17,6 +17,8 @@ async function BlogPage() {
             summary={item.summary}
             title={item.title}
             key={item.slug}
+            categoryLabel={item.category.label}
+            categorySlug={item.category.slug}
           />
         ))}
       </div>

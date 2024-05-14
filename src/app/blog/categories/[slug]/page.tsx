@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import PostCard from "@/components/post-card";
-import { fetchCategories, fetchPosts } from "@/lib/data";
+import {
+  fetchCategories,
+  fetchCategoryBySlug,
+  fetchPosts,
+  fetchPostsByCategory,
+} from "@/lib/data";
 
 type CategoryPageProps = {
   params: {
@@ -10,10 +15,8 @@ type CategoryPageProps = {
 };
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const categories = await fetchCategories();
-  const posts = await fetchPosts();
-  const category = categories.find((item) => item.slug === params.slug);
-  const filteredPosts = posts.filter((item) => item.category === category?.id);
+  const category = await fetchCategoryBySlug(params.slug);
+  const filteredPosts = await fetchPostsByCategory(category.id);
 
   return (
     <div>
@@ -30,8 +33,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             summary={item.summary}
             title={item.title}
             key={item.slug}
-            categoryLabel={category?.label}
-            categorySlug={category?.slug}
+            categoryLabel={item.category.label}
+            categorySlug={item.category.slug}
           />
         ))}
       </div>

@@ -7,7 +7,6 @@ import LatestBlogPosts from "@/components/latest-blog-posts";
 import LatestWorks from "@/components/latest-works";
 import githubLogo from "@/images/github.png";
 import nextLogo from "@/images/next.svg";
-import { fetchLatestPosts, fetchLatestWorks } from "@/lib/data";
 
 export default async function Home() {
   return (

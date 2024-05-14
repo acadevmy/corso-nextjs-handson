@@ -15,7 +15,23 @@ h2 {
 }
 
 @layer components {
+  .btn {
+    @apply rounded-md p-2 text-base h-max;
+  }
+
+  .btn:hover {
+    @apply hover:opacity-80;
+  }
+
+  .btn-primary {
+    @apply bg-orange-500;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-black;
+  }
+
   .btn-link {
-    @apply hover:text-orange-500
+    @apply hover:text-orange-500;
   }
 }

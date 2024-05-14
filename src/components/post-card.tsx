@@ -38,7 +38,7 @@ function PostCard({
 
       {categoryLabel && categorySlug && (
         <div className="my-2">
-          <CategoryChip label={categoryLabel} slug={categorySlug} />
+          <CategoryChip label={categoryLabel} />
         </div>
       )}
 

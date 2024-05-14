@@ -17,7 +17,7 @@ async function PostPage({ params }: PostPage) {
         {/* <Image /> */}
       </div>
 
-      <CategoryChip slug={post.category.slug} label={post.category.label} />
+      <CategoryChip label={post.category.label} />
 
       <p className="text-zinc-500 text-sm pb-1 mt-2">
         {formatDate(post?.publishedAt)}

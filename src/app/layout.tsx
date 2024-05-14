@@ -1,7 +1,9 @@
 import "./globals.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 import Navbar from "@/components/navbar";
 
@@ -20,10 +22,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="max-w-4xl m-auto p-10">
-          <Navbar />
-          {children}
-        </main>
+        <SkeletonTheme
+          baseColor="rgb(100, 100, 100)"
+          highlightColor="rgb(120, 120,120)"
+        >
+          <main className="max-w-4xl m-auto p-10">
+            <Navbar />
+            {children}
+          </main>
+        </SkeletonTheme>
       </body>
     </html>
   );

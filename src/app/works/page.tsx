@@ -1,28 +1,15 @@
-import WorkCard from "@/components/work-card";
-import { fetchWorks } from "@/lib/data";
+import { Suspense } from "react";
+
+import MyWorks, { MyWorksSkeleton } from "@/components/my-works";
 
 export default async function WorksPage() {
-  const works = await fetchWorks();
   return (
     <div>
       <h1 className="mb-10">Works 💻</h1>
 
-      <div className="">
-        {works.map((item) => (
-          <div
-            key={item.id}
-            className="after:block after:h-px after:bg-zinc-500 after:my-10"
-          >
-            <WorkCard
-              company={item.company}
-              description={item.description}
-              role={item.role}
-              startDate={item.startDate}
-              endDate={item.endDate}
-            />
-          </div>
-        ))}
-      </div>
+      <Suspense fallback={<MyWorksSkeleton />}>
+        <MyWorks />
+      </Suspense>
     </div>
   );
 }

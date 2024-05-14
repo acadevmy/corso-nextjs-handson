@@ -1,5 +1,6 @@
 import { ImageProps } from "next/image";
 import Link, { LinkProps } from "next/link";
+import Skeleton from "react-loading-skeleton";
 
 import { formatDate } from "@/lib/utils";
 
@@ -46,6 +47,24 @@ function PostCard({
 
       <p className="text-sm">{summary}</p>
     </Link>
+  );
+}
+
+export function PostCardSkeleton() {
+  return (
+    <div className="border border-zinc-500 p-6 rounded-md">
+      <Skeleton count={1} className="h-60 mb-10 rounded-md" />
+
+      <Skeleton count={1} className="mb-2" width={120} />
+
+      <Skeleton count={1} className="my-2" width={100} />
+
+      <div className="mb-1">
+        <Skeleton count={2} className="mb-2 h-5" />
+      </div>
+
+      <Skeleton count={4} />
+    </div>
   );
 }
 

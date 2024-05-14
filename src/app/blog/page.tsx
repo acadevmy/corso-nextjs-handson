@@ -1,27 +1,15 @@
-import PostCard from "@/components/post-card";
-import { fetchPosts } from "@/lib/data";
+import { Suspense } from "react";
+
+import BlogPosts, { BlogPostsSkeleton } from "@/components/blog-posts";
 
 async function BlogPage() {
-  const posts = await fetchPosts();
-
   return (
     <div>
       <h1 className="mb-10">Blog 📚</h1>
 
-      <div className="flex flex-col gap-10">
-        {posts.map((item) => (
-          <PostCard
-            imageSrc={item.imageSrc}
-            publishedAt={item.publishedAt}
-            slug={item.slug}
-            summary={item.summary}
-            title={item.title}
-            key={item.slug}
-            categoryLabel={item.category.label}
-            categorySlug={item.category.slug}
-          />
-        ))}
-      </div>
+      <Suspense fallback={<BlogPostsSkeleton />}>
+        <BlogPosts />
+      </Suspense>
     </div>
   );
 }

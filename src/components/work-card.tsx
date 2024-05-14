@@ -1,3 +1,5 @@
+import Skeleton from "react-loading-skeleton";
+
 import { formatDate } from "@/lib/utils";
 
 type WorkCardProps = {
@@ -25,6 +27,21 @@ export default function WorkCard({
       </p>
 
       <p className="text-sm">{description}</p>
+    </div>
+  );
+}
+
+export function WorkCardSkeleton() {
+  return (
+    <div>
+      <Skeleton count={1} className="mb-2" width={80} />
+
+      <Skeleton count={1} className="mb-2" width={120} />
+
+      <Skeleton count={1} className="mb-1" width={100} />
+
+      <Skeleton count={2} />
+      <Skeleton count={1} width="80%" />
     </div>
   );
 }

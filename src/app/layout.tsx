@@ -2,12 +2,12 @@ import "./globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { SkeletonTheme } from "react-loading-skeleton";
 
 import Navbar from "@/components/navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +21,7 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <SkeletonTheme
           baseColor="rgb(100, 100, 100)"
           highlightColor="rgb(120, 120,120)"

@@ -11,11 +11,16 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: {
-    template: " %s | Il mio portfolio",
+    template: "%s | Il mio portfolio",
     default: "Il mio portfolio",
   },
   description:
     "Proident laborum nulla dolore est laboris tempor enim non irure qui.",
+  openGraph: {
+    title: "Il mio portfolio",
+    description:
+      "Proident laborum nulla dolore est laboris tempor enim non irure qui.",
+  },
 };
 
 type RootLayoutProps = Readonly<{

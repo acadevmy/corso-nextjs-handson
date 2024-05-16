@@ -1,11 +1,11 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 import PostCard from "@/components/post-card";
 import {
   fetchCategories,
   fetchCategoryBySlug,
-  fetchPosts,
   fetchPostsByCategory,
 } from "@/lib/data";
 
@@ -14,6 +14,21 @@ type CategoryPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
+  const category = await fetchCategoryBySlug(params.slug);
+
+  return {
+    title: category.label,
+    description: category.description,
+    openGraph: {
+      title: category.slug,
+      description: category.description,
+    },
+  };
+}
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const category = await fetchCategoryBySlug(params.slug);

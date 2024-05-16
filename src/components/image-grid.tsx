@@ -10,37 +10,51 @@ import gridImage6 from "@/images/grid-image-6.jpeg";
 
 function ImageGrid() {
   const imageClassName = "rounded-md object-cover h-80 mb-6";
+  const placeholder = "blur";
+  const sizes = "(min-width: 640px) 33vw, 100vw";
   return (
     <div className="sm:columns-3 gap-2">
       <Image
         alt=""
         src={gridImage1}
         className={clsx(imageClassName, "sm:h-40 sm:mb-2")}
+        placeholder={placeholder}
+        sizes={sizes}
       />
       <Image
         alt=""
         src={gridImage2}
         className={clsx(imageClassName, "sm:h-60")}
+        placeholder={placeholder}
+        sizes={sizes}
       />
       <Image
         alt=""
         src={gridImage3}
         className={clsx(imageClassName, "sm:h-60 sm:mb-2")}
+        placeholder={placeholder}
+        sizes={sizes}
       />
       <Image
         alt=""
         src={gridImage4}
         className={clsx(imageClassName, "sm:h-40")}
+        placeholder={placeholder}
+        sizes={sizes}
       />
       <Image
         alt=""
         src={gridImage5}
         className={clsx(imageClassName, "sm:h-40 sm:mb-2")}
+        placeholder={placeholder}
+        sizes={sizes}
       />
       <Image
         alt=""
         src={gridImage6}
         className={clsx(imageClassName, "sm:h-60")}
+        placeholder={placeholder}
+        sizes={sizes}
       />
     </div>
   );

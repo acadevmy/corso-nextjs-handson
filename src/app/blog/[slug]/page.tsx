@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import CategoryChip from "@/components/category-chip";
@@ -17,8 +18,8 @@ async function PostPage({ params }: PostPage) {
 
   return (
     <div>
-      <div className="relative w-full h-80 mb-10 bg-zinc-400 rounded-md">
-        {/* <Image /> */}
+      <div className="relative w-full h-80 mb-10 bg-zinc-400 rounded-md overflow-hidden">
+        <Image src={post.imageSrc} alt="" fill />
       </div>
 
       <CategoryChip label={post.category.label} />

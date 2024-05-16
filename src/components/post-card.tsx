@@ -1,4 +1,4 @@
-import { ImageProps } from "next/image";
+import Image, { ImageProps } from "next/image";
 import Link, { LinkProps } from "next/link";
 import Skeleton from "react-loading-skeleton";
 
@@ -33,8 +33,8 @@ function PostCard({
       className="block border border-zinc-500 p-6 rounded-md"
     >
       {imageSrc && (
-        <div className="relative w-full h-60 mb-10 bg-zinc-400 rounded-md">
-          {/* <Image /> */}
+        <div className="relative w-full h-60 mb-10 bg-zinc-400 rounded-md overflow-hidden">
+          <Image src={imageSrc} alt="" fill sizes="75vw" />
         </div>
       )}
 

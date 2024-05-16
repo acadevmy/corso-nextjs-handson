@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type ErrorMessageNotFoundProps = {
-  title: string;
+  title?: string;
 };
 
 export default function ErrorMessageNotFound({

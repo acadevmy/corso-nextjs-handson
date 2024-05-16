@@ -51,7 +51,7 @@ export default async function Home() {
         </p>
       </div>
 
-      <div className="mb-10 flex gap-4">
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row">
         <ChannelLink
           src={githubLogo}
           alt="github logo"

@@ -9,7 +9,7 @@ export default async function LatestBlogPosts() {
     <div>
       <h2 className="mb-6">Gli ultimi articoli</h2>
 
-      <div className="flex gap-10">
+      <div className="flex flex-col gap-10 sm:flex-row">
         {data.map((item) => (
           <div key={item.slug} className="flex-1">
             <PostCard

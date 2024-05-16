@@ -12,7 +12,7 @@ function ChannelLink({ title, description, href, src, alt }: ChannelLinkProps) {
   return (
     <a
       href={href}
-      className="flex-1 flex items-center rounded-t-md gap-3 p-2 border border-zinc-500 bg-zinc-700"
+      className="flex-1 flex items-center rounded-md gap-3 p-2 border border-zinc-500 bg-zinc-700"
     >
       <Image src={src} alt={alt} className="w-10 h-10 object-contain" />
 

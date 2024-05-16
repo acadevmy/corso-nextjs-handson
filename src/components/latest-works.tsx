@@ -11,7 +11,7 @@ async function LatestWorks() {
     <div>
       <h2 className="mb-6">Gli ultimi lavori</h2>
 
-      <div className="flex gap-10">
+      <div className="flex flex-col gap-10 sm:flex-row">
         {data.map((item) => (
           <WorkCard
             key={item.id}

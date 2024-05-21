@@ -5,6 +5,7 @@ import { useFormState } from "react-dom";
 import { createPost } from "@/lib/actions";
 import { Category } from "@/lib/definitions";
 
+import FormFieldError from "../form-field-error";
 import FormSubmitButton from "../form-submit-button";
 
 type CreateBlogPostFormProps = {
@@ -25,6 +26,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           placeholder="Inserisci l'immagine di copertina"
           required
         />
+        <FormFieldError labels={formState?.errors?.imageSrc} />
       </div>
 
       <div>
@@ -36,6 +38,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           placeholder="Inserisci uno slug"
           required
         />
+        <FormFieldError labels={formState?.errors?.slug} />
       </div>
 
       <div>
@@ -47,6 +50,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           placeholder="Inserisci il titolo"
           required
         />
+        <FormFieldError labels={formState?.errors?.title} />
       </div>
 
       <div>
@@ -57,6 +61,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           placeholder="Inserisci un riassunto"
           required
         />
+        <FormFieldError labels={formState?.errors?.summary} />
       </div>
 
       <div>
@@ -67,6 +72,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           placeholder="Inserisci il contenuto"
           required
         />
+        <FormFieldError labels={formState?.errors?.content} />
       </div>
 
       <div>
@@ -78,11 +84,12 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
             </option>
           ))}
         </select>
+        <FormFieldError labels={formState?.errors?.category} />
       </div>
 
-      {!!formState?.error && (
+      {!!formState?.errorMessage && (
         <div className="border border-red-300 bg-red-500/50 p-4 rounded-md">
-          {formState.error}
+          {formState.errorMessage}
         </div>
       )}
 

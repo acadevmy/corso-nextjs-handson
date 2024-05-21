@@ -1,6 +1,8 @@
 import { createPost } from "@/lib/actions";
 import { fetchCategories } from "@/lib/data";
 
+import FormSubmitButton from "../form-submit-button";
+
 async function CreateBlogPostForm() {
   const categories = await fetchCategories();
 
@@ -70,9 +72,7 @@ async function CreateBlogPostForm() {
         </select>
       </div>
 
-      <button type="submit" className="btn btn-primary">
-        Invia
-      </button>
+      <FormSubmitButton />
     </form>
   );
 }

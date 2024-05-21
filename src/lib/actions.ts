@@ -1,16 +1,15 @@
 "use server";
 
 import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 import { Post } from "./definitions";
 
 export async function createPost(currentState: any, formData: FormData) {
   try {
-    await new Promise((res) => setTimeout(res, 3000));
-
     const { imageSrc, slug, title, summary, content, category } =
       Object.fromEntries(formData.entries()) as unknown as Post;
-
     const publishedAt = new Date().toISOString();
     await sql`
       INSERT INTO posts ("imageSrc", slug, title, summary, content, category, "publishedAt")
@@ -21,4 +20,9 @@ export async function createPost(currentState: any, formData: FormData) {
       error: "Qualcosa è andato storto",
     };
   }
+
+  revalidatePath("/");
+  revalidatePath("/blog");
+  revalidatePath("/blog/categories/[slug]", "page");
+  redirect("/blog");
 }

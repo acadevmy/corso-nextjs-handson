@@ -42,7 +42,7 @@ const posts = [
       "Proident laborum amet aliquip sint. Labore cupidatat esse et enim. Quis nulla qui duis laborum et ut qui amet eu irure. Aliqua id exercitation quis consequat. Non irure aliquip ea ex officia proident cillum quis deserunt mollit enim et quis incididunt. Labore eu reprehenderit duis incididunt ea do enim exercitation aliqua anim.",
     content:
       "Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur. Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur. Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur.",
-    publishedAt: new Date(2024, 4, 23),
+    publishedAt: new Date(2024, 1, 23),
     category: 1,
   },
   {
@@ -55,7 +55,7 @@ const posts = [
       "Est mollit cillum ullamco sit commodo cillum ad. Est veniam ad amet voluptate incididunt proident et in cillum ex do ipsum. Non ipsum dolor elit exercitation minim sit. Irure sint ipsum aliqua dolore est ad nostrud. Quis anim occaecat proident in commodo excepteur. Consequat fugiat exercitation deserunt anim eiusmod incididunt officia fugiat aute. Ea nulla id excepteur deserunt non sit id et do.",
     content:
       "Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur. Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur. Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur.",
-    publishedAt: new Date(2024, 4, 22),
+    publishedAt: new Date(2024, 1, 22),
     category: 2,
   },
   {
@@ -68,7 +68,7 @@ const posts = [
       "Tempor irure reprehenderit incididunt ut tempor velit Lorem. Quis proident excepteur qui ex aliquip enim labore elit fugiat adipisicing ut anim. Dolore quis eiusmod sint mollit proident mollit esse nisi anim nulla Lorem. Cupidatat consectetur dolor Lorem elit est pariatur anim ut et fugiat qui irure ea in.",
     content:
       "Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur. Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur. Lorem do proident eu nisi ea. Minim consequat Lorem quis dolor. Voluptate culpa excepteur nostrud Lorem cupidatat qui tempor consectetur.",
-    publishedAt: new Date(2023, 4, 22),
+    publishedAt: new Date(2023, 2, 22),
     category: 2,
   },
 ];
@@ -136,7 +136,7 @@ async function seedPosts(client) {
       title VARCHAR(255) NOT NULL,
       summary TEXT NOT NULL,
       content TEXT NOT NULL,
-      "publishedAt" DATE NOT NULL,
+      "publishedAt" TIMESTAMP NOT NULL,
       category VARCHAR(255) REFERENCES categories(id) NOT NULL,
       "imageSrc" VARCHAR(255) NOT NULL
     )

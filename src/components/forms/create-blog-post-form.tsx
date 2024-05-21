@@ -1,13 +1,21 @@
+"use client";
+
+import { useFormState } from "react-dom";
+
 import { createPost } from "@/lib/actions";
-import { fetchCategories } from "@/lib/data";
+import { Category } from "@/lib/definitions";
 
 import FormSubmitButton from "../form-submit-button";
 
-async function CreateBlogPostForm() {
-  const categories = await fetchCategories();
+type CreateBlogPostFormProps = {
+  categories: Category[];
+};
+
+function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
+  const [formState, formAction] = useFormState(createPost, undefined);
 
   return (
-    <form className="flex flex-col gap-10" action={createPost}>
+    <form className="flex flex-col gap-10" action={formAction}>
       <div>
         <label htmlFor="imageSrc">Immagine</label>
         <input
@@ -71,6 +79,12 @@ async function CreateBlogPostForm() {
           ))}
         </select>
       </div>
+
+      {!!formState?.error && (
+        <div className="border border-red-300 bg-red-500/50 p-4 rounded-md">
+          {formState.error}
+        </div>
+      )}
 
       <FormSubmitButton />
     </form>

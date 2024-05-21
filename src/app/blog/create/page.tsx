@@ -1,6 +1,8 @@
 import CreateBlogPostForm from "@/components/forms/create-blog-post-form";
+import { fetchCategories } from "@/lib/data";
 
-function BlogCreatePage() {
+async function BlogCreatePage() {
+  const categories = await fetchCategories();
   return (
     <div>
       <h1 className="mb-4">Crea un nuovo post ✍️</h1>
@@ -8,7 +10,7 @@ function BlogCreatePage() {
         Proident laborum nulla dolore est laboris tempor enim non irure qui.
       </h2>
 
-      <CreateBlogPostForm />
+      <CreateBlogPostForm categories={categories} />
     </div>
   );
 }

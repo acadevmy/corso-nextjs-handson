@@ -2,8 +2,12 @@ import { fetchPosts } from "@/lib/data";
 
 import PostCard, { PostCardSkeleton } from "./post-card";
 
-async function BlogPosts() {
-  const posts = await fetchPosts();
+type BlogPostsProps = {
+  query: string;
+};
+
+async function BlogPosts({ query }: BlogPostsProps) {
+  const posts = await fetchPosts(query);
 
   return (
     <div className="flex flex-col gap-10">

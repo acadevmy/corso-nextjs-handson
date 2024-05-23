@@ -3,11 +3,12 @@ import { sql } from "@vercel/postgres";
 import { Category, Post, Work } from "./definitions";
 
 // posts
-export async function fetchPosts() {
+export async function fetchPosts(query: string) {
   const data = await sql<Post>`
     SELECT posts.*, to_jsonb(categories) as category
     FROM posts
     JOIN categories ON posts.category = categories.id
+    WHERE title ILIKE ${`%${query}%`}
     ORDER BY "publishedAt" DESC
   `;
 

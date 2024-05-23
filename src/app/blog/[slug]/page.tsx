@@ -41,7 +41,7 @@ async function PostPage({ params }: PostPageProps) {
   return (
     <div>
       <div className="relative w-full h-80 mb-10 bg-zinc-400 rounded-md overflow-hidden">
-        <Image src={post.imageSrc} alt="" fill />
+        <Image src={post.imageSrc} alt="" fill className="object-cover" />
       </div>
 
       <CategoryChip label={post.category.label} />

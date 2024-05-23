@@ -34,7 +34,13 @@ function PostCard({
     >
       {imageSrc && (
         <div className="relative w-full h-60 mb-10 bg-zinc-400 rounded-md overflow-hidden">
-          <Image src={imageSrc} alt="" fill sizes="75vw" />
+          <Image
+            src={imageSrc}
+            alt=""
+            fill
+            sizes="75vw"
+            className="object-cover"
+          />
         </div>
       )}
 

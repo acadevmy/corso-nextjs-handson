@@ -13,7 +13,12 @@ async function AdminPage() {
       <div className="flex gap-20">
         {session?.user?.image && (
           <div className="relative w-40 h-40 rounded-full overflow-hidden">
-            <Image src={session?.user?.image} alt="" fill />
+            <Image
+              src={session?.user?.image}
+              alt=""
+              fill
+              className="object-cover"
+            />
           </div>
         )}
 

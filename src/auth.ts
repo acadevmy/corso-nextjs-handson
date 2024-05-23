@@ -5,6 +5,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Github],
   pages: {
     signIn: "/auth/login",
+    error: "/auth/error",
   },
   callbacks: {
     authorized({ request, auth }) {

@@ -22,5 +22,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return true;
     },
+    signIn({ user }) {
+      const isAdmin = user.email === process.env.ADMIN_EMAIL;
+      return isAdmin;
+    },
   },
 });

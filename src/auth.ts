@@ -6,4 +6,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/auth/login",
   },
+  callbacks: {
+    authorized({ request, auth }) {
+      const isLogginIn = !!auth?.user;
+      const isOnLogin = request.nextUrl.pathname === "/auth/login";
+
+      if (isLogginIn && isOnLogin) {
+        return Response.redirect(new URL("/", request.nextUrl));
+      }
+
+      return true;
+    },
+  },
 });

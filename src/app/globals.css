@@ -45,6 +45,10 @@ label {
     @apply bg-white text-black;
   }
 
+  .btn-danger {
+    @apply bg-red-500;
+  }
+
   .btn-link {
     @apply hover:text-orange-500;
   }

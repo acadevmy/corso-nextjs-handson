@@ -5,6 +5,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+import { signIn, signOut } from "@/auth";
+
+// posts
 const CreatePostSchema = z.object({
   imageSrc: z.string().url({ message: "Formato url non valido" }),
   slug: z
@@ -59,4 +62,12 @@ export async function createPost(currentState: any, formData: FormData) {
   revalidatePath("/blog");
   revalidatePath("/blog/categories/[slug]", "page");
   redirect("/blog");
+}
+
+// auth
+export async function logout() {
+  await signOut();
+}
+export async function login() {
+  await signIn("github", { redirectTo: "/admin" });
 }

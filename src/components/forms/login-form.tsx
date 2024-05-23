@@ -1,16 +1,10 @@
 import { Github } from "lucide-react";
 
-import { signIn } from "@/auth";
+import { login } from "@/lib/actions";
 
 function LoginForm() {
   return (
-    <form
-      action={async () => {
-        "use server";
-
-        await signIn("github", { redirectTo: "/" });
-      }}
-    >
+    <form action={login}>
       <button
         type="submit"
         className="btn btn-secondary w-full flex items-center justify-center"

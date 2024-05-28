@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { SkeletonTheme } from "react-loading-skeleton";
 
+import DraftModeBanner from "@/components/draft-mode-banner";
 import Navbar from "@/components/navbar";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           highlightColor="rgb(120, 120,120)"
         >
           <main className="max-w-4xl m-auto p-10">
+            <DraftModeBanner />
             <Navbar />
             {children}
           </main>

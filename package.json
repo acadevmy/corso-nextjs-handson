@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node -r dotenv/config ./src/scripts/seed.js"
+    "seed": "node -r dotenv/config ./src/scripts/seed.js",
+    "cy:open": "cypress open",
+    "cy:e2e": "cypress run --browser chrome --headless"
   },
   "dependencies": {
     "@vercel/postgres": "^0.8.0",
@@ -26,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cypress": "^13.10.0",
     "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",

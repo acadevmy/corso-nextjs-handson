@@ -1,4 +1,4 @@
-import { Trash } from "lucide-react";
+import { FilePenLine, Trash } from "lucide-react";
 import Link from "next/link";
 
 import { deletePost } from "@/lib/actions";
@@ -32,12 +32,19 @@ async function AdminBlog({}: Props) {
               categorySlug={item.category.slug}
             />
 
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center gap-2">
               <form action={deletePost.bind(null, item.id)}>
                 <button type="submit" className="btn btn-danger">
                   <Trash />
                 </button>
               </form>
+
+              <Link
+                href={`/admin/blog/update/${item.slug}`}
+                className="btn btn-secondary"
+              >
+                <FilePenLine />
+              </Link>
             </div>
           </div>
         ))}

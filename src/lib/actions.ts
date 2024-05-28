@@ -27,19 +27,12 @@ const CreatePostSchema = z.object({
 
 export async function createPost(currentState: any, formData: FormData) {
   try {
-    const validateFields = CreatePostSchema.safeParse({
-      imageSrc: formData.get("imageSrc"),
-      slug: formData.get("slug"),
-      title: formData.get("title"),
-      summary: formData.get("summary"),
-      content: formData.get("content"),
-      category: formData.get("category"),
-    });
+    const validateFields = validatePostFormData(formData);
 
-    if (!validateFields.success) {
+    if (validateFields.error) {
       return {
-        errors: validateFields.error.flatten().fieldErrors,
-        errorMessage: "Errore di validazione. Controlla i campi.",
+        errors: validateFields.error.errors,
+        errorMessage: validateFields.error.errorMessage,
       };
     }
 
@@ -55,6 +48,39 @@ export async function createPost(currentState: any, formData: FormData) {
   } catch (e) {
     return {
       errorMessage: "Qualcosa è andato storto nella crezione del post",
+    };
+  }
+
+  revalidateBlogsPaths();
+  redirect("/admin");
+}
+
+export async function updatePost(
+  postSlug: string,
+  currentState: any,
+  formData: FormData,
+) {
+  try {
+    const validateFields = validatePostFormData(formData);
+
+    if (validateFields.error) {
+      return {
+        errors: validateFields.error.errors,
+        errorMessage: validateFields.error.errorMessage,
+      };
+    }
+
+    const { imageSrc, slug, title, summary, content, category } =
+      validateFields.data;
+
+    await sql`
+      UPDATE posts
+      SET "imageSrc" = ${imageSrc}, slug = ${slug}, title = ${title}, summary = ${summary}, content = ${content}, category = ${category}
+      WHERE slug = ${postSlug}
+    `;
+  } catch (e) {
+    return {
+      errorMessage: "Qualcosa è andato storto nell'aggiornamento del post",
     };
   }
 
@@ -93,4 +119,29 @@ function revalidateBlogsPaths() {
   revalidatePath("/admin");
   revalidatePath("/blog");
   revalidatePath("/blog/categories/[slug]", "page");
+}
+
+function validatePostFormData(formData: FormData) {
+  const validateFields = CreatePostSchema.safeParse({
+    imageSrc: formData.get("imageSrc"),
+    slug: formData.get("slug"),
+    title: formData.get("title"),
+    summary: formData.get("summary"),
+    content: formData.get("content"),
+    category: formData.get("category"),
+  });
+
+  if (!validateFields.success) {
+    return {
+      error: {
+        errors: validateFields.error.flatten().fieldErrors,
+        errorMessage: "Errore di validazione. Controlla i campi.",
+      },
+    };
+  }
+
+  return {
+    success: true,
+    data: validateFields.data,
+  };
 }

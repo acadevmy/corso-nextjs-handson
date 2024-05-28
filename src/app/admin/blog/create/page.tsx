@@ -1,4 +1,4 @@
-import CreateBlogPostForm from "@/components/forms/create-blog-post-form";
+import UpsertBlogPostForm from "@/components/forms/upsert-blog-post-form";
 import { fetchCategories } from "@/lib/data";
 
 async function BlogCreatePage() {
@@ -10,7 +10,7 @@ async function BlogCreatePage() {
         Proident laborum nulla dolore est laboris tempor enim non irure qui.
       </h2>
 
-      <CreateBlogPostForm categories={categories} />
+      <UpsertBlogPostForm categories={categories} />
     </div>
   );
 }

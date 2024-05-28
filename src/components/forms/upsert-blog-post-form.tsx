@@ -2,18 +2,27 @@
 
 import { useFormState } from "react-dom";
 
-import { createPost } from "@/lib/actions";
-import { Category } from "@/lib/definitions";
+import { createPost, updatePost } from "@/lib/actions";
+import { Category, Post } from "@/lib/definitions";
 
 import FormFieldError from "../form-field-error";
 import FormSubmitButton from "../form-submit-button";
 
 type CreateBlogPostFormProps = {
   categories: Category[];
+  defaultValues?: Post;
+  slug?: string;
 };
 
-function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
-  const [formState, formAction] = useFormState(createPost, undefined);
+function CreateBlogPostForm({
+  categories,
+  defaultValues,
+  slug,
+}: CreateBlogPostFormProps) {
+  const [formState, formAction] = useFormState(
+    slug ? updatePost.bind(null, slug) : createPost,
+    undefined,
+  );
 
   return (
     <form className="flex flex-col gap-10" action={formAction}>
@@ -24,6 +33,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           id="imageSrc"
           name="imageSrc"
           placeholder="Inserisci l'immagine di copertina"
+          defaultValue={defaultValues?.imageSrc}
           required
         />
         <FormFieldError labels={formState?.errors?.imageSrc} />
@@ -36,6 +46,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           id="slug"
           name="slug"
           placeholder="Inserisci uno slug"
+          defaultValue={defaultValues?.slug}
           required
         />
         <FormFieldError labels={formState?.errors?.slug} />
@@ -48,6 +59,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           id="title"
           name="title"
           placeholder="Inserisci il titolo"
+          defaultValue={defaultValues?.title}
           required
         />
         <FormFieldError labels={formState?.errors?.title} />
@@ -59,6 +71,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           id="summary"
           name="summary"
           placeholder="Inserisci un riassunto"
+          defaultValue={defaultValues?.summary}
           required
         />
         <FormFieldError labels={formState?.errors?.summary} />
@@ -70,6 +83,7 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
           id="content"
           name="content"
           placeholder="Inserisci il contenuto"
+          defaultValue={defaultValues?.content}
           required
         />
         <FormFieldError labels={formState?.errors?.content} />
@@ -77,7 +91,12 @@ function CreateBlogPostForm({ categories }: CreateBlogPostFormProps) {
 
       <div>
         <label htmlFor="category">Categoria</label>
-        <select id="category" name="category" required>
+        <select
+          id="category"
+          name="category"
+          required
+          defaultValue={defaultValues?.category.id}
+        >
           {categories.map((item) => (
             <option key={item.id} value={item.id}>
               {item.label}

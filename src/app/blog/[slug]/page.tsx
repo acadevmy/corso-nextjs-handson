@@ -17,6 +17,12 @@ export async function generateMetadata({
 }: PostPageProps): Promise<Metadata> {
   const post = await fetchPostBySlug(params.slug);
 
+  if (!post) {
+    return {
+      title: "Il post non esiste",
+    };
+  }
+
   return {
     title: post.title,
     description: post.summary,

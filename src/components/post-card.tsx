@@ -30,7 +30,7 @@ function PostCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      className="block border border-zinc-500 p-6 rounded-md"
+      className="block border border-zinc-500 p-6 rounded-md flex-1"
     >
       {imageSrc && (
         <div className="relative w-full h-60 mb-10 bg-zinc-400 rounded-md overflow-hidden">

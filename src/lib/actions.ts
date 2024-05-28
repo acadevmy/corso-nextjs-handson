@@ -54,14 +54,29 @@ export async function createPost(currentState: any, formData: FormData) {
     `;
   } catch (e) {
     return {
-      errorMessage: "Qualcosa è andato storto",
+      errorMessage: "Qualcosa è andato storto nella crezione del post",
     };
   }
 
-  revalidatePath("/");
-  revalidatePath("/blog");
-  revalidatePath("/blog/categories/[slug]", "page");
+  revalidateBlogsPaths();
   redirect("/admin");
+}
+
+export async function deletePost(id: string) {
+  try {
+    await sql`
+      DELETE
+      FROM posts
+      WHERE id = ${id}
+    `;
+
+    revalidateBlogsPaths();
+    redirect("/admin");
+  } catch (e) {
+    return {
+      errorMessage: "Qualcosa è andato storto nell'eliminazione del post",
+    };
+  }
 }
 
 // auth
@@ -70,4 +85,12 @@ export async function logout() {
 }
 export async function login() {
   await signIn("github", { redirectTo: "/admin" });
+}
+
+// utils
+function revalidateBlogsPaths() {
+  revalidatePath("/");
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+  revalidatePath("/blog/categories/[slug]", "page");
 }

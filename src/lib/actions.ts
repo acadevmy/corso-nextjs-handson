@@ -61,7 +61,7 @@ export async function createPost(currentState: any, formData: FormData) {
   revalidatePath("/");
   revalidatePath("/blog");
   revalidatePath("/blog/categories/[slug]", "page");
-  redirect("/blog");
+  redirect("/admin");
 }
 
 // auth
